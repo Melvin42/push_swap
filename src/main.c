@@ -20,6 +20,7 @@ typedef struct	s_list t_list;
 struct	s_list
 {
 	int		data;
+	int		index;
 	t_list	*next;
 };
 
@@ -63,7 +64,7 @@ void	ft_write(char *str)
 		write(1, "RRR\n", 4);
 }
 
-t_list	*lst_new(int data)
+t_list	*lst_new(int data, int index)
 {
 	t_list	*new;
 
@@ -71,6 +72,7 @@ t_list	*lst_new(int data)
 	if (new == NULL)
 		return (NULL);
 	new->data = data;
+	new->index = index;
 	new->next = NULL;
 	return (new);
 }
@@ -196,29 +198,24 @@ int	ft_create_list(t_list **a, int ac, char **av)
 	int	i;
 
 	i = 0;
-	*a = lst_new(ft_atoi(av[++i]));
+	*a = lst_new(ft_atoi(av[++i]), (i - 1));
 	if (*a == NULL)
 		return (-1);
 	while (++i < ac)
 	{
-		lst_add_back(a, lst_new(ft_atoi(av[i])));
+		lst_add_back(a, lst_new(ft_atoi(av[i]), (i - 1)));
 	}
 	print_lst(*a);
 	return (0);
 }
 
-int	ft_swap_a(t_list *a, t_list *b)
+void	ft_swap_node(t_list **lst)
 {
-	(void)a;
-	(void)b;
-	return (0);
-}
+	t_list	*tmp;
 
-int	ft_swap_b(t_list *a, t_list *b)
-{
-	(void)a;
-	(void)b;
-	return (0);
+	tmp = *lst;
+	*lst = (*lst)->next;
+	(*lst)->next = tmp;
 }
 
 int	ft_push_a(t_list *a, t_list *b)
@@ -235,28 +232,29 @@ int	ft_push_b(t_list *a, t_list *b)
 	return (0);
 }
 
-int	ft_rotate(t_list *lst)
+t_list	*ft_rotate(t_list **lst)
 {
-	int	tmp;
+	t_list	*tmp;
+	t_list	*new;
 
-	tmp = lst->data;
-	lst->data = lst_last(lst)->data;
-	lst_last(lst)->data = tmp;
-	return (0);
+	new = (*lst)->next;
+	tmp = lst_last(*lst);
+	tmp->next = *lst;
+	(*lst)->next = NULL;
+	return (new);
 }
 
-int	ft_reverse_rotate_a(t_list *a, t_list *b)
+t_list	*ft_reverse_rotate(t_list **lst)
 {
-	(void)a;
-	(void)b;
-	return (0);
-}
+	t_list	*tmp;
+	t_list	*new;
 
-int	ft_reverse_rotate_b(t_list *a, t_list *b)
-{
-	(void)a;
-	(void)b;
-	return (0);
+	new = lst_last(*lst);
+	new->next = *lst;	
+	tmp = lst_last(*lst);
+	tmp = NULL;
+	(*lst)->next = NULL;
+	return (new);
 }
 
 int	ft_swap_both(t_list *a, t_list *b)
