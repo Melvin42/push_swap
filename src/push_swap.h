@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 13:41:41 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:05:21 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ struct	s_list
 
 /*	utils.c */
 void	ft_write(char *str);
+void	ft_swap(int *a, int *b);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_isspace(int c);
 int		ft_isdigit(int c);

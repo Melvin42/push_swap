@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:25:09 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 13:34:12 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:05:23 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ void	ft_write(char *str)
 		write(1, "RRB\n", 4);
 	else if (ft_strcmp(str, "RRR") == 0)
 		write(1, "RRR\n", 4);
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 int	ft_strcmp(char *s1, char *s2)

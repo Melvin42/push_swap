@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:28:23 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 13:30:31 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:20:01 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	print_lst(t_list *lst)
 	tmp = lst;
 	while (tmp)
 	{
-		printf("%d\n", tmp->data);
+		printf("data = %d | index = %d\n", tmp->data, tmp->index);
 		tmp = tmp->next;
 	}
 }
