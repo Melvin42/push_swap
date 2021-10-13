@@ -35,10 +35,12 @@ CC =			clang $(FLAGS) $(INC)
 
 SRC_FT =	\
 			cases \
+			free \
 			lst \
 			lst_utils \
 			main \
 			operations \
+			search_median \
 			utils
 
 ## List of Utilities

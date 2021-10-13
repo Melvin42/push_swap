@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 15:25:24 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:44:30 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,7 @@ int	ft_create_list(t_list **a, int ac, char **av)
 	tab = ft_cpy_list(*a);
 	if (tab == NULL)
 		return (-1);
-	i = -1;
-	while (++i < ac - 1)
-		printf("tab[i] = %d\n", tab[i]);
-	print_lst(*a);
+	ft_free((void **)&tab);
 	return (0);
 }
 
@@ -102,9 +99,7 @@ int	ft_create_list(t_list **a, int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_list	*a;
-	t_list	*b;
 
-	(void)b;
 	if (ac == 1)
 		write(1, "Error\n", 6);
 	else 

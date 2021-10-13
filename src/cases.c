@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:39:32 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 13:41:45 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:56:07 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,25 @@ void	ft_case_four(t_list *a)
 	(void)a;
 }
 
-void	ft_case_five(t_list *a)
+int	ft_case_five(t_list *a)
 {
-	(void)a;
+	t_list	*b;
+	t_list	*tmp;
+	int	median;
+
+	b = malloc(sizeof(*b));
+	b = NULL;
+	tmp = a;
+	median = ft_search_median(a);
+	while (tmp)
+	{
+		if (tmp->index < median)
+		{
+			lst_add_back(&b, lst_new(tmp->data, tmp->index));
+		}
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 int	ft_case_hundred(t_list *a)

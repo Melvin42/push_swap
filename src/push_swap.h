@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 14:05:21 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/13 15:55:57 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,15 @@ int		ft_reverse_rotate_both(t_list *a, t_list *b);
 void	ft_case_two(t_list *a);
 void	ft_case_three(t_list *a);
 void	ft_case_four(t_list *a);
-void	ft_case_five(t_list *a);
+int		ft_case_five(t_list *a);
 int		ft_case_hundred(t_list *a);
 int		ft_case_five_hundred(t_list *a);
 int		ft_check_case(t_list *a, int ac);
+
+/*	free.c */
+void	ft_free(void **ptr);
+
+/*	ft_search_median.c */
+int		ft_search_median(t_list *lst);
 
 #endif
