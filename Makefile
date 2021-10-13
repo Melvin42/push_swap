@@ -33,8 +33,13 @@ CC =			clang $(FLAGS) $(INC)
 #HOW TO LIST .c 
 #	ls -l | awk '{print $9}' | grep -E ".c$"| sed "s/\.c/ \\\/g" | sed '$s/\\$//g'
 
-SRC_FT =		\
-				main
+SRC_FT =	\
+			cases \
+			lst \
+			lst_utils \
+			main \
+			operations \
+			utils
 
 ## List of Utilities
 
