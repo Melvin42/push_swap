@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:27:04 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 15:56:11 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/14 21:51:48 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,15 @@ t_list	*lst_new(int data, int index)
 	new->index = index;
 	new->next = NULL;
 	return (new);
+}
+
+void	lst_add_front(t_list **lst, t_list *new)
+{
+	if (new && lst)
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }
 
 void	lst_add_back(t_list **lst, t_list *new)

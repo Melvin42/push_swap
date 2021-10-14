@@ -6,70 +6,79 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:35:32 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 13:36:17 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/15 00:04:53 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap_node(t_list **lst)
+void	ft_swap_lst(t_list **lst, char *s1, char *s2)
+{
+	t_list	*tmp;
+
+	tmp = (*lst)->next;
+	(*lst)->next = (*lst)->next->next;
+	tmp->next = (*lst);
+	(*lst) = tmp;
+	if (!s2)
+		ft_write(s1);
+}
+
+void	ft_push(t_list **lst1, t_list **lst2, char *str)
+{
+	t_list	*tmp;
+
+	tmp = *lst1;
+	*lst1 = (*lst1)->next;
+	lst_add_front(&(*lst2), tmp);
+	ft_write(str);
+}
+
+void	ft_rotate(t_list **lst, char *s1, char *s2)
 {
 	t_list	*tmp;
 
 	tmp = *lst;
 	*lst = (*lst)->next;
-	(*lst)->next = tmp;
+	tmp->next = NULL;
+	lst_add_back(&(*lst), tmp);
+	if (!s2)
+		ft_write(s1);
 }
 
-int	ft_push_a(t_list *a, t_list *b)
-{
-	(void)a;
-	(void)b;
-	return (0);
-}
-
-int	ft_push_b(t_list *a, t_list *b)
-{
-	(void)a;
-	(void)b;
-	return (0);
-}
-
-t_list	*ft_rotate(t_list **lst)
+void	ft_reverse_rotate(t_list **lst, char *s1, char *s2)
 {
 	t_list	*tmp;
-	t_list	*new;
+	t_list	*prev;
 
-	new = (*lst)->next;
 	tmp = lst_last(*lst);
+	prev = *lst;
+	while (prev->next->next)
+		prev = prev->next;
+	prev->next = NULL;
 	tmp->next = *lst;
-	(*lst)->next = NULL;
-	return (new);
+	*lst = tmp;
+	if (!s2)
+		ft_write(s1);
 }
 
-t_list	*ft_reverse_rotate(t_list **lst)
+void	ft_swap_both(t_list **a, t_list **b)
 {
-	t_list	*tmp;
-	t_list	*new;
-
-	new = lst_last(*lst);
-	new->next = *lst;	
-	tmp = lst_last(*lst);
-	tmp = NULL;
-	(*lst)->next = NULL;
-	return (new);
+	ft_swap_lst(a, SA, SB); 
+	ft_swap_lst(b, SA, SB); 
+	ft_write(SS);
 }
 
-int	ft_swap_both(t_list *a, t_list *b)
+void	ft_rotate_both(t_list **a, t_list **b)
 {
-	(void)a;
-	(void)b;
-	return (0);
+	ft_rotate(a, RA, RB); 
+	ft_rotate(b, RA, RB); 
+	ft_write(RR);
 }
 
-int	ft_reverse_rotate_both(t_list *a, t_list *b)
+void	ft_reverse_rotate_both(t_list **a, t_list **b)
 {
-	(void)a;
-	(void)b;
-	return (0);
+	ft_reverse_rotate(a, RA, RB);
+	ft_reverse_rotate(b, RA, RB);
+	ft_write(RRR);
 }

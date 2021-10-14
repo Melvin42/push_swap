@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:25:09 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 14:05:23 by melperri         ###   ########.fr       */
+/*   Updated: 2021/10/14 17:12:36 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 void	ft_write(char *str)
 {
-	if (ft_strcmp(str, "SA") == 0)
-		write(1, "SA\n", 3);
-	else if (ft_strcmp(str, "SB") == 0)
-		write(1, "SB\n", 3);
-	else if (ft_strcmp(str, "SS") == 0)
-		write(1, "SS\n", 3);
-	else if (ft_strcmp(str, "PA") == 0)
-		write(1, "PA\n", 3);
-	else if (ft_strcmp(str, "PB") == 0)
-		write(1, "PB\n", 3);
-	else if (ft_strcmp(str, "RA") == 0)
-		write(1, "RA\n", 3);
-	else if (ft_strcmp(str, "RB") == 0)
-		write(1, "RB\n", 3);
-	else if (ft_strcmp(str, "RR") == 0)
-		write(1, "RB\n", 3);
-	else if (ft_strcmp(str, "RRA") == 0)
-		write(1, "RRA\n", 4);
-	else if (ft_strcmp(str, "RRB") == 0)
-		write(1, "RRB\n", 4);
-	else if (ft_strcmp(str, "RRR") == 0)
-		write(1, "RRR\n", 4);
+	if (ft_strcmp(str, SA) == 0)
+		write(1, "sa\n", 3);
+	else if (ft_strcmp(str, SB) == 0)
+		write(1, "sb\n", 3);
+	else if (ft_strcmp(str, SS) == 0)
+		write(1, "ss\n", 3);
+	else if (ft_strcmp(str, PA) == 0)
+		write(1, "pa\n", 3);
+	else if (ft_strcmp(str, PB) == 0)
+		write(1, "pb\n", 3);
+	else if (ft_strcmp(str, RA) == 0)
+		write(1, "ra\n", 3);
+	else if (ft_strcmp(str, RB) == 0)
+		write(1, "rb\n", 3);
+	else if (ft_strcmp(str, RR) == 0)
+		write(1, "rb\n", 3);
+	else if (ft_strcmp(str, RRA) == 0)
+		write(1, "rra\n", 4);
+	else if (ft_strcmp(str, RRB) == 0)
+		write(1, "rrb\n", 4);
+	else if (ft_strcmp(str, RRR) == 0)
+		write(1, "rrr\n", 4);
 }
 
 void	ft_swap(int *a, int *b)
