@@ -6,75 +6,11 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/15 00:05:57 by melperri         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:03:10 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ft_set_index(t_list *lst, int *tab)
-{
-	t_list	*tmp;
-	int	len;
-	int	i;
-
-	tmp = lst;
-	len = lst_size(lst);
-	i = 0;
-	while (i < len)
-	{
-		while (tmp)
-		{
-			if (tmp->data == tab[i])
-				tmp->index = i;
-			tmp = tmp->next;
-		}
-		tmp = lst;
-		i++;
-	}
-}
-
-static int	*ft_sort_tab(int *tab, int len)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		j = i + 1;
-		if (tab[i] > tab[j])
-		{
-			ft_swap(&tab[i], &tab[j]);
-			i = 0;
-		}
-		else
-			i++;
-	}
-	return (tab);
-}
-
-static int	*ft_list_to_tab(t_list *lst)
-{
-	t_list *tmp;
-	int	*tab;
-	int	len;
-
-	tab = malloc(sizeof(int) * lst_size(lst));
-	if (tab == NULL)
-		return (NULL);
-	tmp = lst;
-	len = 0;
-	while (tmp)
-	{
-		tab[len] = tmp->data;
-		len++;
-		tmp = tmp->next;
-	}
-	ft_sort_tab(tab, len);
-	ft_set_index(lst, tab);
-	return (tab);
-}
 
 static int	ft_create_list(t_list **a, t_list **b, int ac, char **av)
 {
@@ -91,7 +27,7 @@ static int	ft_create_list(t_list **a, t_list **b, int ac, char **av)
 		return (-1);
 	while (++i < ac)
 		lst_add_back(a, lst_new(ft_atoi(av[i]), 0));
-	tab = ft_list_to_tab(*a);
+	tab = ft_list_to_tab_sort(*a);
 	if (tab == NULL)
 		return (-1);
 	ft_free((void **)&tab);
@@ -127,7 +63,7 @@ int	main(int ac, char **av)
 		printf("list B\n");
 		print_lst(b);
 		clear_lst(&a);
-			clear_lst(&b);
+		clear_lst(&b);
 	}
 	return (0);
 }

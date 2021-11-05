@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:39:32 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/15 00:07:37 by melperri         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:50:17 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ void	ft_case_five(t_list **a, t_list **b)
 
 int	ft_case_hundred(t_list **a, t_list **b)
 {
-	(void)a;
-	(void)b;
+	if (ft_chunk(a, b) == -1)
+		return (-1);
 	return (0);
 }
 

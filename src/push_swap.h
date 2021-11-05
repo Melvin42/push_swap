@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/14 23:30:26 by melperri         ###   ########.fr       */
+/*   Updated: 2021/11/05 14:01:56 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+# define CHUNK_NBR 5
+# define CHUNK_SIZE 20
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -83,8 +85,17 @@ void	ft_free(void **ptr);
 /*	ft_search_median.c */
 int		ft_search_median(t_list *lst);
 
+/*	ft_chunk.c */
+int		ft_chunk(t_list **a, t_list **b);
+
 /*	sort.c */
 
 /*	tab.c */
+int		ft_find_min(t_list *lst, int *tab);
+int		ft_find_max(t_list *lst, int *tab);
+void	ft_set_index(t_list *lst, int *tab);
+int		*ft_sort_tab(int *tab, int len);
+int		*ft_list_to_tab_sort(t_list *lst);
+int		*ft_list_to_tab(t_list *list);
 
 #endif

@@ -41,6 +41,8 @@ SRC_FT =	\
 			main \
 			operations \
 			search_median \
+			chunk \
+			tab \
 			utils
 
 ## List of Utilities
