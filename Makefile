@@ -22,7 +22,7 @@ LIBS =			-L/usr/include
 
 SANITIZE =		-fsanitize=address
 
-DEBUG =			-g3 ${SANITIZE}
+DEBUG =			-g3 #${SANITIZE}
 
 FLAGS =			-Wall -Wextra -Werror $(FAST) $(DEBUG) -D_REENTRANT
 

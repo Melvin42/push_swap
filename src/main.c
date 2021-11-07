@@ -58,10 +58,10 @@ int	main(int ac, char **av)
 			clear_lst(&b);
 			return (0);
 		}
-		printf("list A\n");
-		print_lst(a);
-		printf("list B\n");
-		print_lst(b);
+//		printf("list A\n");
+//		print_lst(a);
+//		printf("list B\n");
+//		print_lst(b);
 		clear_lst(&a);
 		clear_lst(&b);
 	}
