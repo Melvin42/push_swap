@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:39:32 by melperri          #+#    #+#             */
-/*   Updated: 2021/11/05 14:50:17 by melperri         ###   ########.fr       */
+/*   Updated: 2021/11/07 17:44:47 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,10 @@ int	ft_check_case(t_list **a, t_list **b, int ac)
 	}
 	else if (ac > 101 && ac <= 501)
 	{
-		if (ft_case_five_hundred(a, b) != 0)
+		if (ft_case_hundred(a, b) != 0)
 			return (-1);
+//		if (ft_case_five_hundred(a, b) != 0)
+//			return (-1);
 	}
 	return (0);
 }

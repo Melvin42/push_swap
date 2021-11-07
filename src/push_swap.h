@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/11/05 14:01:56 by melperri         ###   ########.fr       */
+/*   Updated: 2021/11/07 17:49:12 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+# define FRONT 1
+# define BACK 2
 # define CHUNK_NBR 5
 # define CHUNK_SIZE 20
 
