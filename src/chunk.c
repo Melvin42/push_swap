@@ -6,7 +6,7 @@
 /*   By: melperri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:52:28 by melperri          #+#    #+#             */
-/*   Updated: 2021/11/07 17:58:10 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:53:25 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int	ft_search_new_pos(t_list *b, int nbr)
 	tmp = b;
 	front = 0;
 	back = 0;
-	while (tmp && (!(nbr < tmp->index && nbr > lst_last(tmp)->index)))
+	while (tmp && (nbr < tmp->index && nbr > lst_last(tmp)->index))
 	{
 		front++;
 		tmp = tmp->next;
@@ -130,29 +130,29 @@ int	ft_prepare_b(t_list **b, int to_move)
 		return (-1);
 	if (it_is_new_min(b, to_move) == 1)
 	{
-		ref = ft_find_min(*b, tab);
-		if (ft_search_old_min(*b, ref) == FRONT)
+		ref = ft_find_max(*b, tab);
+		if (ft_search_old_max(*b, ref) == FRONT)
 		{
-			while ((*b)->index > ref)
+			while ((*b)->index != ref)
 				ft_rotate(b, RB, NULL);
 		}
 		else
 		{
-			while ((*b)->index > ref)
-				ft_rotate(b, RRB, NULL);
+			while ((*b)->index != ref)
+				ft_reverse_rotate(b, RRB, NULL);
 		}
 	}
 	else if (it_is_new_max(b, to_move) == 1)
 	{
-		ref = ft_find_min(*b, tab);
+		ref = ft_find_max(*b, tab);
 		if (ft_search_old_max(*b, ref) == FRONT)
 		{
-			while ((*b)->index > ref)
+			while ((*b)->index != ref)
 				ft_rotate(b, RB, NULL);
 		}
 		else
 		{
-			while ((*b)->index > ref)
+			while ((*b)->index != ref)
 				ft_reverse_rotate(b, RRB, NULL);
 		}
 	}
@@ -160,16 +160,12 @@ int	ft_prepare_b(t_list **b, int to_move)
 	{
 		if (ft_search_new_pos(*b, to_move) == FRONT)
 		{
-			while (!(to_move < (*b)->index && to_move > lst_last(*b)->index))
-			{
+			while (!(to_move > (*b)->index && to_move < lst_last(*b)->index))
 				ft_rotate(b, RB, NULL);
-			}
 		}
 		else
-			while (!(to_move < (*b)->index && to_move > lst_last(*b)->index))
-			{
+			while (!(to_move > (*b)->index && to_move < lst_last(*b)->index))
 				ft_reverse_rotate(b, RRB, NULL);
-			}
 	}
 	free(tab);
 	return (0);
@@ -232,16 +228,14 @@ int	ft_create_chunk(t_list **a, t_list **b, int chunk_max, int chunk_min, int i)
 		{
 			if ((*a)->next && *b)
 			{
-				if (ft_is_prev(*b, (*a)->next->index, chunk_min) == 1)
-				{
+				if (ft_is_next(*b, (*a)->next->index, chunk_min) == 1)
 					ft_swap_lst(a, SA, NULL);
-				}
 				else
 				{
 					if (ft_search_next_to_push(*a, chunk_max, chunk_min) == FRONT)
 						ft_rotate(a, RA, NULL);
 					else
-						ft_rotate(a, RRA, NULL);
+						ft_reverse_rotate(a, RRA, NULL);
 				}
 			}
 			else
@@ -261,15 +255,32 @@ void	ft_put_min_on_the_top(t_list **b, int chunk_min, int chunk_max)
 	if (chunk_min != 0)
 	{
 		while ((*b)->index != chunk_max - CHUNK_SIZE + 1)
-		{
 			ft_rotate(b, RB, NULL);
-		}
 	}
 	else
 		while ((*b)->index != 0)
-		{
 			ft_rotate(b, RB, NULL);
-		}
+}
+
+int	ft_put_max_on_the_top(t_list **b, int chunk_max)
+{
+	int	ref;
+	int	*tab;
+
+	tab = ft_list_to_tab(*b);
+	if (tab == NULL)
+		return (-1);
+	ref = ft_find_max(*b, tab);
+	if (ft_search_old_max(*b, ref) == FRONT)
+	{
+		while ((*b)->index != chunk_max)
+			ft_rotate(b, RB, NULL);
+	}
+	else
+		while ((*b)->index != chunk_max)
+			ft_reverse_rotate(b, RRB, NULL);
+	free(tab);
+	return (0);
 }
 
 int	ft_put_nbr_on_the_top(t_list *a, int nbr)
@@ -293,46 +304,41 @@ int	ft_put_nbr_on_the_top(t_list *a, int nbr)
 		return (BACK);
 }
 
-void	ft_push_back_in_a(t_list **a, t_list **b, int chunk_max, int chunk_min, int max)
+int	ft_push_back_in_a(t_list **a, t_list **b, int chunk_max, int max)
 {
 	if (chunk_max != max && chunk_max != CHUNK_SIZE - 1)
 	{
-		if (ft_put_nbr_on_the_top(*a, chunk_max - CHUNK_SIZE - 1) == FRONT)
+		if (ft_put_nbr_on_the_top(*a, chunk_max + 1) == FRONT)
 		{
-			while ((*a)->index != chunk_max - CHUNK_SIZE - 1)
-			{
+			while ((*a)->index != chunk_max + 1)
 				ft_rotate(a, RA, NULL);
-			}
 		}
 		else
 		{
-			while ((*a)->index != chunk_max - CHUNK_SIZE - 1)
-			{
+			while ((*a)->index != chunk_max + 1)
 				ft_reverse_rotate(a, RRA, NULL);
-			}
 		}
 	}
 	else if (chunk_max == CHUNK_SIZE - 1)
 	{
-		if (ft_put_nbr_on_the_top(*a, max) == FRONT)
+		if (ft_put_nbr_on_the_top(*a, CHUNK_SIZE) == FRONT)
 		{
-			while ((*a)->index != max)
-			{
+			while ((*a)->index != CHUNK_SIZE)
 				ft_rotate(a, RA, NULL);
-			}
 		}
 		else
 		{
-			while ((*a)->index != max)
-			{
+			while ((*a)->index != CHUNK_SIZE)
 				ft_reverse_rotate(a, RRA, NULL);
-			}
 		}
-		ft_put_min_on_the_top(b, chunk_min, chunk_max);
+		if (ft_put_max_on_the_top(b, chunk_max) == -1)
+			return (-1);
 	}
-	ft_put_min_on_the_top(b, chunk_min, chunk_max);
+	if (ft_put_max_on_the_top(b, chunk_max) == -1)
+			return (-1);
 	while (lst_size(*b) > 0)
 		ft_push(b, a, PB);
+	return (0);
 }
 
 int	ft_chunk(t_list **a, t_list **b)
@@ -340,29 +346,25 @@ int	ft_chunk(t_list **a, t_list **b)
 	int	max;
 	int	chunk_max;
 	int	chunk_min;
+	int	nbr;
 
 	max = lst_size(*a) - 1;
 	chunk_max = lst_size(*a) - 1;
-	chunk_min = chunk_max - (chunk_max / CHUNK_NBR);
-	ft_create_chunk(a, b, chunk_max, chunk_min, 20);
-	ft_push_back_in_a(a, b, chunk_max, chunk_min, max);
-	chunk_max -= CHUNK_SIZE;
-	chunk_min -= CHUNK_SIZE;
-	ft_create_chunk(a, b, chunk_max, chunk_min, 40);
-	ft_push_back_in_a(a, b, chunk_max, chunk_min, max);
-	chunk_max -= CHUNK_SIZE;
-	chunk_min -= CHUNK_SIZE;
-	ft_create_chunk(a, b, chunk_max, chunk_min, 60);
-	ft_push_back_in_a(a, b, chunk_max, chunk_min, max);
-	chunk_max -= CHUNK_SIZE;
-	chunk_min -= CHUNK_SIZE;
-	ft_create_chunk(a, b, chunk_max, chunk_min, 80);
-	ft_push_back_in_a(a, b, chunk_max, chunk_min, max);
-	chunk_max -= CHUNK_SIZE;
-	chunk_min -= CHUNK_SIZE;
-	ft_create_chunk(a, b, chunk_max, chunk_min, 100);
-	ft_push_back_in_a(a, b, chunk_max, chunk_min, max);
-	while ((*a)->index != max)
+	chunk_min = lst_size(*a) - CHUNK_SIZE;
+	nbr = CHUNK_NBR;
+	while (nbr != 1)
+	{
+		ft_create_chunk(a, b, chunk_max, chunk_min, CHUNK_SIZE * nbr);
+		if (ft_push_back_in_a(a, b, chunk_max, max) == -1)
+			return (-1);
+		chunk_max -= CHUNK_SIZE;
+		chunk_min -= CHUNK_SIZE;
+		nbr--;
+	}
+	ft_create_chunk(a, b, chunk_max, chunk_min, CHUNK_SIZE);
+	if (ft_push_back_in_a(a, b, chunk_max, max) == -1)
+		return (-1);
+	while ((*a)->index != 0)
 		ft_rotate(a, RA, NULL);
 	return (0);
 }

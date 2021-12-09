@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/11/07 17:46:44 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/09 16:45:13 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 			return (0);
 		}
 //		printf("list A\n");
-//		print_lst(a);
+		print_lst(a);
 //		printf("list B\n");
 //		print_lst(b);
 		clear_lst(&a);
