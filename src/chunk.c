@@ -160,11 +160,14 @@ int	ft_prepare_b(t_list **b, int to_move)
 	{
 		if (ft_search_new_pos(*b, to_move) == FRONT)
 		{
-			while (!(to_move > (*b)->index && to_move < lst_last(*b)->index))
+			while (!(to_move >= (*b)->index && to_move <= lst_last(*b)->index))
+			{
 				ft_rotate(b, RB, NULL);
+//				write(1, "TEST\n", 5);
+			}
 		}
 		else
-			while (!(to_move > (*b)->index && to_move < lst_last(*b)->index))
+			while (!(to_move >= (*b)->index && to_move <= lst_last(*b)->index))
 				ft_reverse_rotate(b, RRB, NULL);
 	}
 	free(tab);
@@ -235,7 +238,11 @@ int	ft_create_chunk(t_list **a, t_list **b, int chunk_max, int chunk_min, int i)
 					if (ft_search_next_to_push(*a, chunk_max, chunk_min) == FRONT)
 						ft_rotate(a, RA, NULL);
 					else
+					{
 						ft_reverse_rotate(a, RRA, NULL);
+//						printf("1\n");
+//						print_lst(*a);
+					}
 				}
 			}
 			else
@@ -243,7 +250,10 @@ int	ft_create_chunk(t_list **a, t_list **b, int chunk_max, int chunk_min, int i)
 				if (ft_search_next_to_push(*a, chunk_max, chunk_min) == FRONT)
 					ft_rotate(a, RA, NULL);
 				else
+				{
 					ft_reverse_rotate(a, RRA, NULL);
+//						printf("2\n");
+				}
 			}
 		}
 	}
@@ -337,7 +347,7 @@ int	ft_push_back_in_a(t_list **a, t_list **b, int chunk_max, int max)
 	if (ft_put_max_on_the_top(b, chunk_max) == -1)
 			return (-1);
 	while (lst_size(*b) > 0)
-		ft_push(b, a, PB);
+		ft_push(b, a, PA);
 	return (0);
 }
 
