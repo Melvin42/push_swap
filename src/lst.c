@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:27:04 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/14 21:51:48 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:43:11 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	lst_pop_first(t_list **lst)
 	}
 }
 
-void	lst_pop_lastst(t_list **lst)
+void	lst_pop_last(t_list **lst)
 {
 	if (*lst)
 	{

@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:28:23 by melperri          #+#    #+#             */
-/*   Updated: 2021/10/13 15:20:01 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 05:42:00 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_list	*lst_last(t_list *lst)
 	t_list	*tmp;
 
 	tmp = lst;
+	if (!lst)
+		return (NULL);
 	while (tmp->next)
 		tmp = tmp->next;
 	return (tmp);

@@ -41,6 +41,8 @@ SRC_FT =	\
 			main \
 			operations \
 			search_median \
+			ft_memset \
+			ft_lstcpy \
 			chunk \
 			tab \
 			utils

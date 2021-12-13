@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/09 16:41:20 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 06:01:18 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@
 # define BACK 2
 # define CHUNK_NBR 5
 # define CHUNK_SIZE 20
+# define TEST_NBR 15
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <limits.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 
-typedef struct	s_list t_list;
+typedef struct s_list	t_list;
 
 struct	s_list
 {
@@ -43,6 +44,16 @@ struct	s_list
 	t_list	*next;
 };
 
+typedef struct s_env {
+	int		chunk_size;
+	int		chunk_nbr;
+	int		chunk_max;
+	int		chunk_min;
+	int		tab_res[TEST_NBR];
+	int		test;
+	int		display;
+} t_env;
+
 /*	utils.c */
 void	ft_write(char *str);
 void	ft_swap(int *a, int *b);
@@ -50,6 +61,7 @@ int		ft_strcmp(char *s1, char *s2);
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
+void	*ft_memset(void *s, int c, size_t n);
 
 /*	lst.c	*/
 t_list	*lst_new(int data, int index);
@@ -63,23 +75,24 @@ t_list	*lst_last(t_list *lst);
 int		lst_size(t_list *lst);
 void	print_lst(t_list *lst);
 void	clear_lst(t_list **lst);
+int		ft_lstcpy(t_list **dst, t_list *src);
 
 /*	operations.c */
-void	ft_swap_lst(t_list **lst, char *s1, char *s2);
-void	ft_push(t_list **lst1, t_list **lst2, char *str);
-void	ft_rotate(t_list **lst, char *s1, char *s2);
-void	ft_reverse_rotate(t_list **lst, char *s1, char *s2);
-void	ft_swap_both(t_list **a, t_list **b);
-void	ft_reverse_rotate_both(t_list **a, t_list **b);
+void	ft_swap_lst(t_list **lst, char *s1, char *s2, t_env *g);
+void	ft_push(t_list **lst1, t_list **lst2, char *str, t_env *g);
+void	ft_rotate(t_list **lst, char *s1, char *s2, t_env *g);
+void	ft_reverse_rotate(t_list **lst, char *s1, char *s2, t_env *g);
+void	ft_swap_both(t_list **a, t_list **b, t_env *g);
+void	ft_reverse_rotate_both(t_list **a, t_list **b, t_env *g);
 
 /*	cases.c */
 void	ft_case_two(t_list *a);
-void	ft_case_three(t_list **a);
-void	ft_case_four(t_list **a, t_list **b);
-void	ft_case_five(t_list **a, t_list **b);
+void	ft_case_three(t_list **a, t_env *g);
+void	ft_case_four(t_list **a, t_list **b, t_env *g);
+void	ft_case_five(t_list **a, t_list **b, t_env *g);
 int		ft_case_hundred(t_list **a, t_list **b);
 int		ft_case_five_hundred(t_list **a, t_list **b);
-int		ft_check_case(t_list **a, t_list **b, int ac);
+int		ft_check_case(t_list **a, t_list **b, int ac, t_env *g);
 
 /*	free.c */
 void	ft_free(void **ptr);
@@ -88,7 +101,7 @@ void	ft_free(void **ptr);
 int		ft_search_median(t_list *lst);
 
 /*	ft_chunk.c */
-int		ft_chunk(t_list **a, t_list **b);
+int		ft_chunk(t_list **a, t_list **b, t_env *g);
 
 /*	sort.c */
 
