@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/13 06:07:36 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 22:38:27 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	ft_search_best_chunk(int *tab)
 	ret = 0;
 	while (++i < TEST_NBR)
 	{
-		if (tab[i] < min)
+		if (tab[i] < min && tab[i] != 0)
 		{
 			min = tab[i];
 			ret = i;

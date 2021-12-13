@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/13 06:01:18 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:34:37 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ struct	s_list
 typedef struct s_env {
 	int		chunk_size;
 	int		chunk_nbr;
+	int		chunk_nbr_max;
 	int		chunk_max;
 	int		chunk_min;
 	int		tab_res[TEST_NBR];
