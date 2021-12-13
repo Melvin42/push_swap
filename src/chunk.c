@@ -6,7 +6,7 @@
 /*   By: melperri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:52:28 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/13 04:16:50 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 06:30:12 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -345,8 +345,10 @@ int	ft_chunk(t_list **a, t_list **b, t_env *g)
 	int	max;
 
 	max = lst_size(*a) - 1;
-	g->chunk_nbr = g->test + 4;;
-	g->chunk_size = max / g->chunk_nbr;
+	g->chunk_nbr = g->test + 2;
+//	printf("%d\n", max +1);
+//	printf("%d\n", g->chunk_nbr);
+	g->chunk_size = (max + 1) / g->chunk_nbr;
 	g->chunk_max = lst_size(*a) - 1;
 	g->chunk_min = lst_size(*a) - g->chunk_size;
 //	printf("%d\n", g->chunk_size);
