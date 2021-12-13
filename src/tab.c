@@ -6,7 +6,7 @@
 /*   By: melperri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:27:29 by melperri          #+#    #+#             */
-/*   Updated: 2021/11/05 15:09:04 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/13 22:44:34 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@ int	ft_find_min(t_list *lst, int *tab)
 	i = 0;
 	len = lst_size(lst);
 	ret = tab[i];
-//	printf("tab_min = %d\n", tab[i]);
 	while (++i < len)
 	{
-//	printf("tab_min = %d\n", tab[i]);
 		if (ret > tab[i])
 			ret = tab[i];
 	}
-//	printf("\n");
 	return (ret);
 }
 
@@ -41,14 +38,11 @@ int	ft_find_max(t_list *lst, int *tab)
 	i = 0;
 	len = lst_size(lst);
 	ret = tab[i];
-//	printf("tab_max = %d\n", tab[i]);
 	while (++i < len)
 	{
-//	printf("tab_max = %d\n", tab[i]);
 		if (ret < tab[i])
 			ret = tab[i];
 	}
-//	printf("\n");
 	return (ret);
 }
 
