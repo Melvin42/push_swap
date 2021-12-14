@@ -42,6 +42,7 @@ SRC_FT =	\
 			main \
 			operations \
 			prepare_b \
+			ft_check_int_max \
 			ft_check_double \
 			put_on_top \
 			min_max \
@@ -51,6 +52,7 @@ SRC_FT =	\
 			chunk_utils \
 			search_median \
 			ft_memset \
+			ft_check_already_sort \
 			ft_lstcpy \
 			search \
 			chunk \

@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:28:23 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 00:30:12 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 18:40:23 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,6 @@ int	lst_size(t_list *lst)
 		i++;
 	}
 	return (i);
-}
-
-void	print_lst(t_list *lst)
-{
-	t_list	*tmp;
-
-	tmp = lst;
-	while (tmp)
-	{
-		printf("data = %d | index = %d\n", tmp->data, tmp->index);
-		tmp = tmp->next;
-	}
 }
 
 void	clear_lst(t_list **lst)

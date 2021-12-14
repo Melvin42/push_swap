@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 01:06:45 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 13:23:06 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 15:01:41 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,7 @@ int	ft_prepare_b(t_list **b, int to_move, t_env *g)
 
 	tab = ft_list_to_tab(*b);
 	if (tab == NULL)
-	{
 		return (-1);
-}
 	if (it_is_new_min(b, to_move) == 1 || it_is_new_max(b, to_move) == 1)
 		ft_find_max_rotate_or_reverse(b, g, tab);
 	else

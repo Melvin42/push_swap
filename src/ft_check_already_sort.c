@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_double.c                                  :+:      :+:    :+:   */
+/*   ft_check_already_sort.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 00:44:30 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 16:54:34 by melperri         ###   ########.fr       */
+/*   Created: 2021/12/14 16:42:34 by melperri          #+#    #+#             */
+/*   Updated: 2021/12/14 18:39:01 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_double(t_list *lst)
+int	ft_check_already_sort(t_list *a)
 {
-	int	*tab;
-	int	size;
-	int	i;
-	int	j;
+	t_list	*tmp;
+	int		i;
 
-	tab = ft_list_to_tab(lst);
-	if (tab == NULL)
-		return (-1);
-	size = lst_size(lst);
-	i = 0;
-	while (i < size)
+	tmp = a;
+	i = tmp->index;
+	while (tmp->next && i < tmp->next->index)
 	{
-		j = i + 1;
-		while (j < size)
-		{
-			if (tab[i] == tab[j])
-			{
-				write(1, "Error\n", 6);
-				return (-1);
-			}
-			j++;
-		}
-		i++;
+		tmp = tmp->next;
+		i = tmp->index;
 	}
-	return (0);
+	if (i == lst_last(a)->index)
+		return (1);
+	else
+		return (0);
 }

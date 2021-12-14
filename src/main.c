@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 13:13:18 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 18:40:03 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 static int	ft_free_all(t_list **a, t_list **b, t_list **lst)
 {
-	clear_lst(a);
-	clear_lst(b);
-	clear_lst(lst);
+	if (a)
+		clear_lst(a);
+	if (b)
+		clear_lst(b);
+	if (lst)
+		clear_lst(lst);
 	return (-1);
 }
 
-static int	ft_create_list(t_list **a, t_list **b, int ac, char **av)
+static int	ft_create_list(t_list **a, int ac, char **av)
 {
 	int	i;
 	int	*tab;
 
 	i = 1;
-	*b = NULL;
 	*a = lst_new(ft_atoi(av[i]), 0);
 	if (*a == NULL)
 		return (-1);
@@ -91,13 +93,18 @@ int	main(int ac, char **av)
 	t_list	*b;
 	t_env	g;
 
-//checker les values > int_max sinon Error\n
 	if (ac == 1)
-		write(1, "Error\n", 6);
+		write(1, ERROR, sizeof(ERROR));
 	else
 	{
 		ft_memset(&g, 0, sizeof(g));
-		if (ft_create_list(&a, &b, ac, av) != 0)
+		a = NULL;
+		b = NULL;
+		if (ft_check_int_max(av) == -1)
+			return (write(1, ERROR, sizeof(ERROR)));
+		if (ft_create_list(&a, ac, av) != 0)
+			return (ft_free_all(&a, &b, NULL));
+		if (ft_check_already_sort(a) == 1)
 			return (ft_free_all(&a, &b, NULL));
 		ft_program(a, b, &g, ac);
 	}

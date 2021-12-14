@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 12:49:03 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 18:43:18 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define RRA "rra"
 # define RRB "rrb"
 # define RRR "rrr"
+# define ERROR "Error\n"
 # define FRONT 1
 # define BACK 2
 # define CHUNK_NBR 5
@@ -78,7 +79,6 @@ void	lst_pop_lastst(t_list **lst);
 /*	lst_utils.c */
 t_list	*lst_last(t_list *lst);
 int		lst_size(t_list *lst);
-void	print_lst(t_list *lst);
 void	clear_lst(t_list **lst);
 int		ft_lstcpy(t_list **dst, t_list *src);
 
@@ -104,6 +104,12 @@ void	ft_free(void **ptr);
 
 /*	ft_search_median.c */
 int		ft_search_median(t_list *lst);
+
+/*	ft_check_already_sort.c */
+int		ft_check_already_sort(t_list *a);
+
+/*	ft_check_int_max.c */
+int		ft_check_int_max(char **av);
 
 /*	prepare_b.c */
 int		ft_prepare_b(t_list **b, int to_move, t_env *g);
