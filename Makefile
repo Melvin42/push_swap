@@ -38,11 +38,21 @@ SRC_FT =	\
 			free \
 			lst \
 			lst_utils \
+			ft_atoi \
 			main \
 			operations \
+			prepare_b \
+			ft_check_double \
+			put_on_top \
+			min_max \
+			create_chunk \
+			push_back_in_a \
+			double_operations \
+			chunk_utils \
 			search_median \
 			ft_memset \
 			ft_lstcpy \
+			search \
 			chunk \
 			tab \
 			utils

@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/13 20:34:37 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 05:03:01 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ struct	s_list
 };
 
 typedef struct s_env {
+	int		max;
 	int		chunk_size;
 	int		chunk_nbr;
 	int		chunk_nbr_max;
@@ -53,16 +54,19 @@ typedef struct s_env {
 	int		tab_res[TEST_NBR];
 	int		test;
 	int		display;
-} t_env;
+}	t_env;
 
 /*	utils.c */
 void	ft_write(char *str);
 void	ft_swap(int *a, int *b);
 int		ft_strcmp(char *s1, char *s2);
+void	*ft_memset(void *s, int c, size_t n);
+int		ft_check_double(t_list *lst);
+
+/*	ft_atoi.c	*/
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *nptr);
-void	*ft_memset(void *s, int c, size_t n);
 
 /*	lst.c	*/
 t_list	*lst_new(int data, int index);
@@ -83,6 +87,8 @@ void	ft_swap_lst(t_list **lst, char *s1, char *s2, t_env *g);
 void	ft_push(t_list **lst1, t_list **lst2, char *str, t_env *g);
 void	ft_rotate(t_list **lst, char *s1, char *s2, t_env *g);
 void	ft_reverse_rotate(t_list **lst, char *s1, char *s2, t_env *g);
+
+/*	double_operations.c */
 void	ft_swap_both(t_list **a, t_list **b, t_env *g);
 void	ft_reverse_rotate_both(t_list **a, t_list **b, t_env *g);
 
@@ -91,8 +97,6 @@ void	ft_case_two(t_list *a);
 void	ft_case_three(t_list **a, t_env *g);
 void	ft_case_four(t_list **a, t_list **b, t_env *g);
 void	ft_case_five(t_list **a, t_list **b, t_env *g);
-int		ft_case_hundred(t_list **a, t_list **b);
-int		ft_case_five_hundred(t_list **a, t_list **b);
 int		ft_check_case(t_list **a, t_list **b, int ac, t_env *g);
 
 /*	free.c */
@@ -101,10 +105,35 @@ void	ft_free(void **ptr);
 /*	ft_search_median.c */
 int		ft_search_median(t_list *lst);
 
+/*	prepare_b.c */
+int		ft_prepare_b(t_list **b, int to_move, t_env *g);
+
+/*	create_chunk.c */
+int		ft_create_chunk(t_list **a, t_list **b, t_env *g);
+
+/*	push_back_in_a.c */
+int		ft_push_back_in_a(t_list **a, t_list **b, t_env *g, int max);
+
+/*	put_on_top.c */
+void	ft_put_min_on_the_top(t_list **b, t_env *g);
+int		ft_put_max_on_the_top(t_list **b, t_env *g);
+int		ft_put_nbr_on_the_top(t_list *a, int nbr);
+
+/*	ft_chunk_utils.c */
+int		ft_is_prev(t_list *lst, int to_move, t_env *g);
+int		ft_is_next(t_list *lst, int to_move, t_env *g);
+int		ft_search_next_to_push(t_list *a, t_env *g);
+int		can_we_prepare_b(t_list **b, int to_move);
+int		ft_search_new_pos(t_list *b, int nbr);
+
 /*	ft_chunk.c */
 int		ft_chunk(t_list **a, t_list **b, t_env *g);
 
-/*	sort.c */
+/*	min_max.c */
+int		it_is_new_min(t_list **b, int to_move);
+int		it_is_new_max(t_list **b, int to_move);
+int		ft_search_old_min(t_list *b, int nbr);
+int		ft_search_old_max(t_list *b, int nbr);
 
 /*	tab.c */
 int		ft_find_min(t_list *lst, int *tab);

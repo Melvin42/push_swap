@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcpy.c                                        :+:      :+:    :+:   */
+/*   search.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 05:25:50 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 00:25:23 by melperri         ###   ########.fr       */
+/*   Created: 2021/12/14 00:21:25 by melperri          #+#    #+#             */
+/*   Updated: 2021/12/14 00:21:58 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstcpy(t_list **dst, t_list *src)
+int	ft_find_min(t_list *lst, int *tab)
 {
-	t_list	*tmp;
+	int	i;
+	int	ret;
+	int	len;
 
-	*dst = lst_new(src->data, src->index);
-	tmp = src->next;
-	while (tmp)
+	i = 0;
+	len = lst_size(lst);
+	ret = tab[i];
+	while (++i < len)
 	{
-		lst_add_back(dst, lst_new(tmp->data, tmp->index));
-		if (lst_last(*dst) == NULL)
-			return (-1);
-		tmp = tmp->next;
+		if (ret > tab[i])
+			ret = tab[i];
 	}
-	return (0);
+	return (ret);
+}
+
+int	ft_find_max(t_list *lst, int *tab)
+{
+	int	i;
+	int	ret;
+	int	len;
+
+	i = 0;
+	len = lst_size(lst);
+	ret = tab[i];
+	while (++i < len)
+	{
+		if (ret < tab[i])
+			ret = tab[i];
+	}
+	return (ret);
 }

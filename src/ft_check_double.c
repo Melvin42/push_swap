@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstcpy.c                                        :+:      :+:    :+:   */
+/*   ft__check_double.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 05:25:50 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 00:25:23 by melperri         ###   ########.fr       */
+/*   Created: 2021/12/14 00:44:30 by melperri          #+#    #+#             */
+/*   Updated: 2021/12/14 00:44:31 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_lstcpy(t_list **dst, t_list *src)
+int	ft_check_double(t_list *lst)
 {
-	t_list	*tmp;
+	int	*tab;
+	int	size;
+	int	i;
+	int	j;
 
-	*dst = lst_new(src->data, src->index);
-	tmp = src->next;
-	while (tmp)
+	tab = ft_list_to_tab(lst);
+	if (tab == NULL)
+		return (-1);
+	size = lst_size(lst);
+	i = 0;
+	while (i < size)
 	{
-		lst_add_back(dst, lst_new(tmp->data, tmp->index));
-		if (lst_last(*dst) == NULL)
-			return (-1);
-		tmp = tmp->next;
+		j = i + 1;
+		while (j < size)
+		{
+			if (tab[i] == tab[j])
+			{
+				write(1, "Error\n", 6);
+				return (-1);
+			}
+			j++;
+		}
+		i++;
 	}
 	return (0);
 }

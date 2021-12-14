@@ -6,51 +6,17 @@
 /*   By: melperri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:27:29 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/13 22:44:34 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 00:22:24 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_find_min(t_list *lst, int *tab)
-{
-	int	i;
-	int	ret;
-	int	len;
-
-	i = 0;
-	len = lst_size(lst);
-	ret = tab[i];
-	while (++i < len)
-	{
-		if (ret > tab[i])
-			ret = tab[i];
-	}
-	return (ret);
-}
-
-int	ft_find_max(t_list *lst, int *tab)
-{
-	int	i;
-	int	ret;
-	int	len;
-
-	i = 0;
-	len = lst_size(lst);
-	ret = tab[i];
-	while (++i < len)
-	{
-		if (ret < tab[i])
-			ret = tab[i];
-	}
-	return (ret);
-}
-
 void	ft_set_index(t_list *lst, int *tab)
 {
 	t_list	*tmp;
-	int	len;
-	int	i;
+	int		len;
+	int		i;
 
 	tmp = lst;
 	len = lst_size(lst);
@@ -90,9 +56,9 @@ int	*ft_sort_tab(int *tab, int len)
 
 int	*ft_list_to_tab_sort(t_list *lst)
 {
-	t_list *tmp;
-	int	*tab;
-	int	len;
+	t_list	*tmp;
+	int		*tab;
+	int		len;
 
 	tab = malloc(sizeof(int) * lst_size(lst));
 	if (tab == NULL)
