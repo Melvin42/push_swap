@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 03:04:36 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 00:44:43 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:13:18 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,6 @@ static int	ft_create_list(t_list **a, t_list **b, int ac, char **av)
 	return (0);
 }
 
-//checker les doublons sinon Error\n
-//checker les values > int_max sinon Error\n
-//ft_list_is_sort
 static int	ft_search_best_chunk(int *tab)
 {
 	int	min;
@@ -94,6 +91,7 @@ int	main(int ac, char **av)
 	t_list	*b;
 	t_env	g;
 
+//checker les values > int_max sinon Error\n
 	if (ac == 1)
 		write(1, "Error\n", 6);
 	else

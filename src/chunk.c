@@ -6,7 +6,7 @@
 /*   By: melperri <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 20:52:28 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 05:07:21 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:53:32 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ int	ft_chunk(t_list **a, t_list **b, t_env *g)
 	ft_create_chunk(a, b, g);
 	if (ft_push_back_in_a(a, b, g, g->max) == -1)
 		return (-1);
-	while ((*a)->index != 0)
-		ft_rotate(a, RA, NULL, g);
+	int	*tab;
+
+	tab = ft_list_to_tab(*b);
+	if (ft_search_nbr(*b, 0, tab) == FRONT)
+		while ((*a)->index != 0)
+			ft_rotate(a, RA, NULL, g);
+	else
+		while ((*a)->index != 0)
+			ft_reverse_rotate(a, RRA, NULL, g);
 	return (0);
 }

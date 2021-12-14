@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 05:03:01 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:49:03 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define BACK 2
 # define CHUNK_NBR 5
 # define CHUNK_SIZE 20
-# define TEST_NBR 15
+# define TEST_NBR 20
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -115,16 +115,14 @@ int		ft_create_chunk(t_list **a, t_list **b, t_env *g);
 int		ft_push_back_in_a(t_list **a, t_list **b, t_env *g, int max);
 
 /*	put_on_top.c */
-void	ft_put_min_on_the_top(t_list **b, t_env *g);
 int		ft_put_max_on_the_top(t_list **b, t_env *g);
-int		ft_put_nbr_on_the_top(t_list *a, int nbr);
 
 /*	ft_chunk_utils.c */
 int		ft_is_prev(t_list *lst, int to_move, t_env *g);
 int		ft_is_next(t_list *lst, int to_move, t_env *g);
 int		ft_search_next_to_push(t_list *a, t_env *g);
 int		can_we_prepare_b(t_list **b, int to_move);
-int		ft_search_new_pos(t_list *b, int nbr);
+int		ft_search_new_pos(t_list *b, int nbr, int *tab);
 
 /*	ft_chunk.c */
 int		ft_chunk(t_list **a, t_list **b, t_env *g);
@@ -132,8 +130,7 @@ int		ft_chunk(t_list **a, t_list **b, t_env *g);
 /*	min_max.c */
 int		it_is_new_min(t_list **b, int to_move);
 int		it_is_new_max(t_list **b, int to_move);
-int		ft_search_old_min(t_list *b, int nbr);
-int		ft_search_old_max(t_list *b, int nbr);
+int		ft_search_nbr(t_list *b, int nbr, int *tab);
 
 /*	tab.c */
 int		ft_find_min(t_list *lst, int *tab);

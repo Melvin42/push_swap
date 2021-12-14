@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:57:24 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 01:02:57 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:33:43 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,59 @@ int	ft_is_next(t_list *lst, int to_move, t_env *g)
 
 int	ft_search_next_to_push(t_list *a, t_env *g)
 {
-	t_list	*tmp;
+	int		*tab;
 	int		front;
 	int		back;
+	int		j = 0;
 
-	tmp = a;
 	front = 0;
-	back = 0;
-	while (tmp && (!(tmp->index >= g->chunk_min && tmp->index <= g->chunk_max)))
-	{
+	back = lst_size(a) - 1;
+	//a mettre dans la fonction mere
+	tab = ft_list_to_tab(a);
+	while (front < back && (!(tab[front] >= g->chunk_min && tab[front] <= g->chunk_max)))
 		front++;
-		tmp = tmp->next;
+	while (back > 0 && (!(tab[back] >= g->chunk_min && tab[back] <= g->chunk_max)))
+	{
+		j++;
+		back--;
 	}
-	back = lst_size(a) - front;
-	if (front <= back)
+	if (front <= j)
 		return (FRONT);
 	else
 		return (BACK);
 }
 
+int	ft_search_new_pos(t_list *b, int nbr, int *tab)
+{
+	int		front;
+	int		back;
+	int		size;
+	int		j;
+
+	front = 1;
+	j = 0;
+	size = lst_size(b) - 1;
+	back = size;
+	if (nbr > tab[0] && nbr < tab[size])
+		return (FRONT);
+	while (front < size && (!(nbr < tab[front - 1] && nbr > tab[front])))
+		front++;
+	while (back > 1 && (!(nbr > tab[back] && nbr < tab[back - 1])))
+	{
+		j++;
+		back--;
+	}
+	if (front <= j)
+		return (FRONT);
+	else
+		return (BACK);
+}
+
+/*
+9
+7
+5
+*/
 int	can_we_prepare_b(t_list **b, int to_move)
 {
 	t_list	*tmp;
@@ -62,25 +96,4 @@ int	can_we_prepare_b(t_list **b, int to_move)
 			return (1);
 	}
 	return (0);
-}
-
-int	ft_search_new_pos(t_list *b, int nbr)
-{
-	t_list	*tmp;
-	int		front;
-	int		back;
-
-	tmp = b;
-	front = 0;
-	back = 0;
-	while (tmp && (nbr < tmp->index && nbr > lst_last(tmp)->index))
-	{
-		front++;
-		tmp = tmp->next;
-	}
-	back = lst_size(b) - front;
-	if (front <= back)
-		return (FRONT);
-	else
-		return (BACK);
 }

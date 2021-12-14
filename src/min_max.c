@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:51:54 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 00:52:43 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 13:19:26 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,43 +40,23 @@ int	it_is_new_max(t_list **b, int to_move)
 	return (1);
 }
 
-int	ft_search_old_min(t_list *b, int nbr)
+int	ft_search_nbr(t_list *b, int nbr, int *tab)
 {
-	t_list	*tmp;
 	int		front;
 	int		back;
+	int		j;
 
-	tmp = b;
+	j = 0;
 	front = 0;
-	back = 0;
-	while (tmp && (!(tmp->index != nbr)))
-	{
+	back = lst_size(b) - 1;
+	while (front < back && tab[front] != nbr)
 		front++;
-		tmp = tmp->next;
-	}
-	back = lst_size(b) - front;
-	if (front <= back)
-		return (FRONT);
-	else
-		return (BACK);
-}
-
-int	ft_search_old_max(t_list *b, int nbr)
-{
-	t_list	*tmp;
-	int		front;
-	int		back;
-
-	tmp = b;
-	front = 0;
-	back = 0;
-	while (tmp && (!(tmp->index != nbr)))
+	while (back > 0 && tab[back] != nbr)
 	{
-		front++;
-		tmp = tmp->next;
+		back--;
+		j++;
 	}
-	back = lst_size(b) - front;
-	if (front <= back)
+	if (front <= j)
 		return (FRONT);
 	else
 		return (BACK);

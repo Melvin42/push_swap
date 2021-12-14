@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 01:17:09 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 05:14:26 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 12:50:14 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	ft_rotate_or_reverse(t_list **a, t_env *g, int search)
 {
-	if (ft_put_nbr_on_the_top(*a, search) == FRONT)
+	int	*tab;
+
+	tab = ft_list_to_tab(*a);
+	if (ft_search_nbr(*a, search, tab) == FRONT)
 		while ((*a)->index != search)
 			ft_rotate(a, RA, NULL, g);
 	else
@@ -25,9 +28,7 @@ static void	ft_rotate_or_reverse(t_list **a, t_env *g, int search)
 int	ft_push_back_in_a(t_list **a, t_list **b, t_env *g, int max)
 {
 	if (g->chunk_max != max && g->chunk_max != g->chunk_size - 1)
-	{
 		ft_rotate_or_reverse(a, g, g->chunk_max + 1);
-	}
 	else if (g->chunk_max == g->chunk_size - 1)
 	{
 		ft_rotate_or_reverse(a, g, g->chunk_size);
