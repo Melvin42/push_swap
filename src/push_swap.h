@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 13:23:57 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 18:43:18 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 21:24:56 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int		ft_put_max_on_the_top(t_list **b, t_env *g);
 /*	ft_chunk_utils.c */
 int		ft_is_prev(t_list *lst, int to_move, t_env *g);
 int		ft_is_next(t_list *lst, int to_move, t_env *g);
-int		ft_search_next_to_push(t_list *a, t_env *g);
+int		ft_search_next_to_push(t_list *a, t_env *g, int *tab);
 int		can_we_prepare_b(t_list **b, int to_move);
 int		ft_search_new_pos(t_list *b, int nbr, int *tab);
 

@@ -6,7 +6,7 @@
 /*   By: melperri <melperri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 00:57:24 by melperri          #+#    #+#             */
-/*   Updated: 2021/12/14 15:02:05 by melperri         ###   ########.fr       */
+/*   Updated: 2021/12/14 21:24:25 by melperri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,8 @@ int	ft_is_next(t_list *lst, int to_move, t_env *g)
 		return (0);
 }
 
-int	ft_search_next_to_push(t_list *a, t_env *g)
+int	ft_search_next_to_push(t_list *a, t_env *g, int *tab)
 {
-	int		*tab;
 	int		front;
 	int		back;
 	int		j;
@@ -38,8 +37,6 @@ int	ft_search_next_to_push(t_list *a, t_env *g)
 	j = 0;
 	front = 0;
 	back = lst_size(a) - 1;
-	//a mettre dans la fonction mere
-	tab = ft_list_to_tab(a);
 	while (front < back && (!(tab[front] >= g->chunk_min
 				&& tab[front] <= g->chunk_max)))
 		front++;
